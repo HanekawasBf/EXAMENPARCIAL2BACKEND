@@ -1,0 +1,36 @@
+{% extends "autos/base.html" %}
+
+{% block title %}Autos registrados{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h1 class="h2 mb-0">Autos registrados</h1>
+</div>
+
+{% if autos %}
+    <div class="table-responsive card shadow-sm">
+        <table class="table table-striped table-hover mb-0">
+            <thead class="table">
+                <tr>
+                    <th scope="col">Marca</th>
+                    <th scope="col">Modelo</th>
+                    <th scope="col">Año</th>
+                    <th scope="col" class="text-end">Precio</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for auto in autos %}
+                    <tr>
+                        <td>{{ auto.marca }}</td>
+                        <td>{{ auto.modelo }}</td>
+                        <td>{{ auto.anio }}</td>
+                        <td class="text-end">${{ auto.precio }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% else %}
+    <div class="alert alert-info">Todavía no hay autos registrados.</div>
+{% endif %}
+{% endblock %}
